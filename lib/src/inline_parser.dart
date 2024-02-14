@@ -194,9 +194,7 @@ class LineBreakSyntax extends InlineSyntax {
 
 /// Matches stuff that should just be passed through as straight text.
 class TextSyntax extends InlineSyntax {
-  TextSyntax(String pattern, {String? sub})
-      : substitute = sub,
-        super(pattern);
+  TextSyntax(super.pattern, {String? sub}) : substitute = sub;
 
   final String? substitute;
 
@@ -493,9 +491,8 @@ class DelimiterRun {
 /// Matches syntax that has a pair of tags and becomes an element, like `*` for
 /// `<em>`. Allows nested tags.
 class TagSyntax extends InlineSyntax {
-  TagSyntax(String pattern, {String? end, this.requiresDelimiterRun = false})
-      : endPattern = RegExp((end != null) ? end : pattern, multiLine: true),
-        super(pattern);
+  TagSyntax(super.pattern, {String? end, this.requiresDelimiterRun = false})
+      : endPattern = RegExp((end != null) ? end : pattern, multiLine: true);
 
   final RegExp endPattern;
 
@@ -1047,8 +1044,7 @@ class LinkSyntax extends TagSyntax {
 /// Matches images like `![alternate text](url "optional title")` and
 /// `![alternate text][label]`.
 class ImageSyntax extends LinkSyntax {
-  ImageSyntax({Resolver? linkResolver})
-      : super(linkResolver: linkResolver, pattern: r'!\[');
+  ImageSyntax({super.linkResolver}) : super(pattern: r'!\[');
 
   @override
   Node _createNode(TagState state, String destination, String? title) {

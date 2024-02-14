@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter_quill/flutter_quill.dart'
-    show Attribute, AttributeScope, BlockEmbed, Delta, DeltaIterator, Style;
+    show Attribute, AttributeScope, BlockEmbed, Style;
+import 'package:flutter_quill/quill_delta.dart';
 
 class DeltaMarkdownEncoder extends Converter<String, String> {
   static const _lineFeedAsciiCode = 0x0A;
