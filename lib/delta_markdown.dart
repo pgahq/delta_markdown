@@ -1,5 +1,3 @@
-library delta_markdown;
-
 import 'dart:convert';
 
 import 'src/delta_markdown_decoder.dart';
